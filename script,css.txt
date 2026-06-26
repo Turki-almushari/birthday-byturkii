@@ -1,0 +1,462 @@
+```javascript
+/* ==========================================
+   Happy 17th Birthday Fajer
+========================================== */
+
+// =========================
+// Elements
+// =========================
+
+const pages = document.querySelectorAll(".page");
+
+const welcomeScreen = document.getElementById("welcome-screen");
+const counterScreen = document.getElementById("counter-screen");
+const questionScreen = document.getElementById("question-screen");
+const cakeScreen = document.getElementById("cake-screen");
+const letterScreen = document.getElementById("letter-screen");
+
+const startBtn = document.getElementById("startBtn");
+const toQuestionBtn = document.getElementById("toQuestionBtn");
+
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+
+const blowBtn = document.getElementById("blowBtn");
+
+const loveText = document.getElementById("loveText");
+
+const typewriter = document.getElementById("typewriter");
+
+// =========================
+// Show Page
+// =========================
+
+function showPage(page){
+
+    pages.forEach(p=>{
+
+        p.classList.remove("active");
+
+    });
+
+    page.classList.add("active");
+
+    window.scrollTo({
+
+        top:0,
+        behavior:"smooth"
+
+    });
+
+}
+
+// =========================
+// Navigation
+// =========================
+
+startBtn.addEventListener("click",()=>{
+
+    showPage(counterScreen);
+
+});
+
+toQuestionBtn.addEventListener("click",()=>{
+
+    showPage(questionScreen);
+
+});
+
+yesBtn.addEventListener("click",()=>{
+
+    showPage(cakeScreen);
+
+});
+
+// =========================
+// Counter
+// =========================
+
+const startDate = new Date("2024-01-01T00:00:00");
+
+const days = document.getElementById("days");
+const hours = document.getElementById("hours");
+const minutes = document.getElementById("minutes");
+const seconds = document.getElementById("seconds");
+
+function updateCounter(){
+
+    const now = new Date();
+
+    const diff = now - startDate;
+
+    const d = Math.floor(diff / (1000*60*60*24));
+
+    const h = Math.floor(diff/(1000*60*60))%24;
+
+    const m = Math.floor(diff/(1000*60))%60;
+
+    const s = Math.floor(diff/1000)%60;
+
+    days.textContent=d;
+    hours.textContent=h;
+    minutes.textContent=m;
+    seconds.textContent=s;
+
+}
+
+updateCounter();
+
+setInterval(updateCounter,1000);
+
+// =========================
+// NO Button Escape
+// =========================
+
+function moveButton(){
+
+    const maxX =
+        window.innerWidth - noBtn.offsetWidth - 20;
+
+    const maxY =
+        window.innerHeight - noBtn.offsetHeight - 20;
+
+    const x = Math.random()*maxX;
+
+    const y = Math.random()*maxY;
+
+    noBtn.style.position="fixed";
+
+    noBtn.style.left=x+"px";
+
+    noBtn.style.top=y+"px";
+
+}
+
+noBtn.addEventListener("mouseenter",moveButton);
+
+noBtn.addEventListener("touchstart",function(e){
+
+    e.preventDefault();
+
+    moveButton();
+
+});
+
+// =========================
+// Hearts Background
+// =========================
+
+const heartsContainer =
+document.getElementById("hearts-container");
+
+function createHeart(){
+
+    const heart =
+    document.createElement("div");
+
+    heart.className="heart";
+
+    heart.style.left =
+    Math.random()*100+"vw";
+
+    heart.style.animationDuration =
+    5+Math.random()*5+"s";
+
+    heart.style.opacity =
+    Math.random();
+
+    heart.style.transform =
+    "scale("+(0.5+Math.random())+") rotate(45deg)";
+
+    heartsContainer.appendChild(heart);
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },10000);
+
+}
+
+setInterval(createHeart,300);
+```
+```javascript
+/* ==========================================
+========================================== */
+
+// =========================
+// Create Candles
+// =========================
+
+const candlesContainer =
+document.getElementById("candles");
+
+for(let i=0;i<5;i++){
+
+    const candle =
+    document.createElement("div");
+
+    candle.className="candle";
+
+    const flame =
+    document.createElement("div");
+
+    flame.className="flame";
+
+    candle.appendChild(flame);
+
+    candlesContainer.appendChild(candle);
+
+}
+
+// =========================
+// Blow Candles
+// =========================
+
+blowBtn.addEventListener("click",()=>{
+
+    document
+    .querySelectorAll(".flame")
+    .forEach(flame=>{
+
+        flame.style.opacity="0";
+
+        flame.style.transform=
+        "translateX(-50%) scale(0)";
+
+    });
+
+    createConfetti();
+
+    createManyHearts();
+
+    loveText.classList.add("show");
+
+    blowBtn.disabled=true;
+
+    setTimeout(()=>{
+
+        showPage(letterScreen);
+
+        startTyping();
+
+    },3500);
+
+});
+
+// =========================
+// Confetti
+// =========================
+
+const confettiContainer =
+document.getElementById("confetti-container");
+
+function createConfetti(){
+
+    const colors=[
+
+        "#ff4f92",
+        "#ff77b7",
+        "#ffffff",
+        "#ffd54f",
+        "#ff9ecb",
+        "#ffc0cb"
+
+    ];
+
+    for(let i=0;i<180;i++){
+
+        const piece=
+        document.createElement("div");
+
+        piece.className="confetti";
+
+        piece.style.left=
+        Math.random()*100+"vw";
+
+        piece.style.top="-20px";
+
+        piece.style.background=
+        colors[Math.floor(Math.random()*colors.length)];
+
+        piece.style.animationDuration=
+        (2+Math.random()*3)+"s";
+
+        piece.style.transform=
+        "rotate("+Math.random()*360+"deg)";
+
+        confettiContainer.appendChild(piece);
+
+        setTimeout(()=>{
+
+            piece.remove();
+
+        },6000);
+
+    }
+
+}
+
+// =========================
+// Hearts Explosion
+// =========================
+
+function createManyHearts(){
+
+    for(let i=0;i<80;i++){
+
+        setTimeout(()=>{
+
+            createHeart();
+
+        },i*70);
+
+    }
+
+}
+
+// =========================
+// Typewriter
+// =========================
+
+const message = `
+
+احبج يا كل كياني و سعادتي و يا كل الناس و اغلاهم و كل عام و انتي بالف و مليون خير و كل عام و انتي بقربي و معاي و كل عام و انا احبج و انتي اثمن الناس و اجملهم و كل عام ان شاء الله يكبر حبنا و يصير اقوى كل سنه و عام و كل عام و انتي اهم ما عندي و احسن شي صار بحياتي و احلى و اجمل صدفات حياتي و كل عام و انتي بحياتي و كل عام و انا اشوفج تكبرين بعيوني و كل عام و انا احبج و اعشقج و اهواج و اهيمج و اموت فيج و اموت عليج و كل عام و انا مغرم فيج و مهيم فيج و مسحور فيج كل عام و انتي فاتنتني بجمالج و عسى الله لا يحرمني منج و يخليج لي العمر كله يا اغلى من عيوني و نظرها و اقرب الناس حق قلبي و اطهر و قلب و ابيض قلب بهالدنيا و يا احلى من شافت عيوني و يا اجمل عيون بهالكون عقبال المليون سنه كلهم بقربي و يمكن ما اكون افضل واحد يكتب كلام نفس جذي بس انا اكثر واحد بهالدنيا و هالكون يحبج و اكثر واحد يهتم لج و يخاف عليج اكثر من نفسه و يحاتيج من الكل حتى من القريب لج و البعيد و على كثر ما كبرتي للحينج ياهل بعيوني و طول عمرج بتضلين ياهل بعيوني و كل عام و انتي بخير يا اجمل ابتسامه شافتها عيوني و ياللي ضحكتها تشرح قلبي و صدري و تذوبني كلي و يا اجمل ايامي و سنيني احبج وايد ياللي ما تكمل ايامي الا بضحكتها و شوفتها و ياللي مستحيل امل من شوفتها و جمال ابتسامتها و جمال عيونها و يا احلى صوت سمعته بحياتي كلها و ياحظي جداً ياحظي يوم تعرفت عليج و زانت ايامي بوجودج احلى صدف حياتي ختمتيها انتي باليوم اللي عرفتج فيه يا كل الناس و كل البشر و كل هالكون احبج جداً جداً جداً والله ❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️ا]
+
+`;
+
+let index = 0;
+
+function startTyping(){
+
+    typewriter.innerHTML="";
+
+    index=0;
+
+    typeWriter();
+
+}
+
+function typeWriter(){
+
+    if(index < message.length){
+
+        typewriter.innerHTML +=
+        message.charAt(index);
+
+        index++;
+
+        setTimeout(typeWriter,35);
+
+    }
+
+}
+```
+```javascript id="finaljs01"
+/* ==========================================
+========================================== */
+
+// =========================
+// Page Transition Effects
+// =========================
+
+pages.forEach(page => {
+
+    page.classList.add("fade-in");
+
+});
+
+// =========================
+// Smooth Entrance Enhancements
+// =========================
+
+window.addEventListener("load", () => {
+
+    welcomeScreen.classList.add("active");
+
+});
+
+// =========================
+// Optional Restart Function (for UX)
+// =========================
+
+function restartExperience(){
+
+    showPage(welcomeScreen);
+
+    // reset candles
+    document.querySelectorAll(".flame").forEach(flame => {
+
+        flame.style.opacity = "1";
+        flame.style.transform = "translateX(-50%) scale(1)";
+
+    });
+
+    // reset love text
+    loveText.classList.remove("show");
+
+    // reset button
+    blowBtn.disabled = false;
+
+    // reset typewriter
+    typewriter.innerHTML = "";
+
+}
+
+// =========================
+// Extra Heart Burst on Click Anywhere
+// =========================
+
+document.addEventListener("click", (e) => {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.style.left = e.clientX + "px";
+    heart.style.top = e.clientY + "px";
+
+    heart.style.position = "fixed";
+    heart.style.pointerEvents = "none";
+
+    heart.style.animationDuration = "2s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 2000);
+
+});
+
+// =========================
+// Mobile Fix: Prevent Scroll Issues
+// =========================
+
+document.addEventListener("touchmove", (e) => {
+
+    // allows smooth interaction but prevents weird bounce on some devices
+    if(document.querySelector(".page.active")){
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+}, { passive: true });
+
+// =========================
+// Safety Init (ensure UI stable)
+// =========================
+
+function init(){
+
+    showPage(welcomeScreen);
+
+    updateCounter();
+
+}
+
+init();
+
+/* ==========================================
+   END OF SCRIPT
+========================================== */
+```

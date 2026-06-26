@@ -1,0 +1,875 @@
+```css
+/* ===================================================
+   Happy 17th Birthday Fajer
+=================================================== */
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ===============================
+   Reset
+================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+    background:#ffd6ea;
+    color:#ffffff;
+    min-height:100vh;
+    position:relative;
+}
+
+/* Pink Background */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top,#ffe7f4,#ffc7e3,#ffb2d8);
+    z-index:-3;
+}
+
+/* Decorative Glow */
+
+body::after{
+    content:"";
+    position:fixed;
+    width:900px;
+    height:900px;
+    border-radius:50%;
+    background:rgba(255,255,255,.25);
+    filter:blur(120px);
+    left:-250px;
+    top:-250px;
+    z-index:-2;
+}
+
+/* ===============================
+   Floating Hearts
+================================*/
+
+#hearts-container{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:0;
+}
+
+.heart{
+    position:absolute;
+    width:20px;
+    height:20px;
+    background:#ff4f92;
+    transform:rotate(45deg);
+    animation:floatHeart linear infinite;
+}
+
+.heart::before,
+.heart::after{
+    content:"";
+    position:absolute;
+    width:20px;
+    height:20px;
+    background:#ff4f92;
+    border-radius:50%;
+}
+
+.heart::before{
+    left:-10px;
+}
+
+.heart::after{
+    top:-10px;
+}
+
+@keyframes floatHeart{
+
+    0%{
+        transform:
+        translateY(100vh)
+        rotate(45deg)
+        scale(.4);
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    100%{
+        transform:
+        translateY(-120vh)
+        rotate(45deg)
+        scale(1.3);
+        opacity:0;
+    }
+
+}
+
+/* ===============================
+   Confetti
+================================*/
+
+#confetti-container{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:99;
+}
+
+.confetti{
+    position:absolute;
+    width:10px;
+    height:16px;
+    animation:confettiFall linear forwards;
+}
+
+@keyframes confettiFall{
+
+    from{
+        transform:
+        translateY(-100px)
+        rotate(0deg);
+        opacity:1;
+    }
+
+    to{
+        transform:
+        translateY(110vh)
+        rotate(720deg);
+        opacity:0;
+    }
+
+}
+
+/* ===============================
+   Pages
+================================*/
+
+.page{
+
+    width:100%;
+    min-height:100vh;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:40px 20px;
+
+    position:relative;
+
+}
+
+.page.active{
+    display:flex;
+}
+
+.content{
+
+    width:100%;
+    max-width:900px;
+
+    text-align:center;
+
+    z-index:2;
+
+}
+
+/* ===============================
+   Titles
+================================*/
+
+.title{
+
+    font-size:clamp(2.4rem,6vw,4.8rem);
+
+    font-weight:800;
+
+    color:#fff;
+
+    text-shadow:
+
+    0 5px 15px rgba(255,90,160,.45),
+    0 0 30px rgba(255,255,255,.55);
+
+    margin-bottom:20px;
+
+}
+
+.subtitle{
+
+    font-size:1.2rem;
+
+    color:white;
+
+    opacity:.95;
+
+    margin-bottom:40px;
+
+}
+
+/* ===============================
+   Buttons
+================================*/
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:999px;
+
+    padding:16px 42px;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    transition:.30s;
+
+    background:white;
+
+    color:#ff4f92;
+
+    box-shadow:
+    0 15px 35px rgba(255,70,150,.25);
+
+}
+
+button:hover{
+
+    transform:
+    translateY(-4px)
+    scale(1.05);
+
+}
+
+button:active{
+
+    transform:scale(.95);
+
+}
+
+#startBtn,
+#toQuestionBtn,
+#yesBtn,
+#blowBtn{
+
+    background:#ff4f92;
+    color:white;
+
+}
+
+#startBtn:hover,
+#toQuestionBtn:hover,
+#yesBtn:hover,
+#blowBtn:hover{
+
+    background:#ff2d7d;
+
+}
+
+#noBtn{
+
+    background:white;
+
+    color:#ff4f92;
+
+    position:relative;
+
+}
+```
+```css
+/* ===================================================
+=================================================== */
+
+/* ===============================
+   Counter
+================================*/
+
+.date{
+    font-size:1.2rem;
+    font-weight:600;
+    color:#fff;
+    margin:20px 0 30px;
+}
+
+#counter{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:45px;
+}
+
+.counter-box{
+
+    width:120px;
+    height:120px;
+
+    background:rgba(255,255,255,.35);
+
+    backdrop-filter:blur(12px);
+
+    border:3px solid rgba(255,255,255,.45);
+
+    border-radius:25px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    box-shadow:
+    0 20px 40px rgba(255,120,180,.25);
+
+    transition:.35s;
+
+}
+
+.counter-box:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.counter-box span{
+
+    font-size:2rem;
+    font-weight:800;
+    color:#ff2d7d;
+
+}
+
+.counter-box small{
+
+    color:#fff;
+    font-size:.9rem;
+    margin-top:8px;
+    letter-spacing:1px;
+
+}
+
+/* ===============================
+   Photo Frame
+================================*/
+
+.photo-frame{
+
+    width:320px;
+    height:320px;
+
+    margin:20px auto 40px;
+
+    padding:10px;
+
+    border-radius:35px;
+
+    background:white;
+
+    box-shadow:
+    0 20px 50px rgba(255,70,150,.30);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.photo-frame::before{
+
+    content:"🎀";
+
+    position:absolute;
+
+    top:-8px;
+    right:15px;
+
+    font-size:2rem;
+
+}
+
+.photo-frame img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:25px;
+
+}
+
+/* ===============================
+   Question
+================================*/
+
+#question-screen h2{
+
+    font-size:3rem;
+    margin-bottom:50px;
+
+}
+
+.question-buttons{
+
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+
+}
+
+.question-buttons button{
+
+    width:150px;
+
+}
+
+/* ===============================
+   Cake
+================================*/
+
+.cake-area{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    margin:40px 0;
+
+}
+
+#cake{
+
+    width:260px;
+    height:180px;
+
+    position:relative;
+
+}
+
+#cake::before{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+    height:120px;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(
+    #ff9dc5,
+    #ff7ab0);
+
+    box-shadow:
+    0 15px 40px rgba(255,80,150,.35);
+
+}
+
+#cake::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:105px;
+
+    width:100%;
+    height:25px;
+
+    background:white;
+
+    border-radius:20px;
+
+}
+
+#candles{
+
+    position:absolute;
+
+    top:5px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+    gap:18px;
+
+}
+
+.candle{
+
+    width:12px;
+    height:55px;
+
+    background:#fff;
+
+    border-radius:8px;
+
+    position:relative;
+
+}
+
+.flame{
+
+    position:absolute;
+
+    width:16px;
+    height:16px;
+
+    border-radius:50%;
+
+    background:gold;
+
+    top:-14px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    box-shadow:
+    0 0 18px gold,
+    0 0 30px orange;
+
+    animation:flicker .25s infinite alternate;
+
+}
+
+@keyframes flicker{
+
+    from{
+
+        transform:
+        translateX(-50%)
+        scale(.9);
+
+    }
+
+    to{
+
+        transform:
+        translateX(-50%)
+        scale(1.1);
+
+    }
+
+}
+
+#loveText{
+
+    margin-top:40px;
+
+    font-size:1.8rem;
+
+    color:white;
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    transition:.8s;
+
+}
+
+#loveText.show{
+
+    opacity:1;
+    transform:translateY(0);
+
+}
+
+/* ===============================
+   Letter
+================================*/
+
+#messageBox{
+
+    width:min(900px,95%);
+
+    margin:auto;
+
+    padding:35px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.35);
+
+    backdrop-filter:blur(15px);
+
+    border:2px solid rgba(255,255,255,.45);
+
+    box-shadow:
+    0 20px 40px rgba(255,90,170,.25);
+
+}
+
+#typewriter{
+
+    color:white;
+
+    line-height:2;
+
+    font-size:1.15rem;
+
+    text-align:left;
+
+    white-space:pre-wrap;
+
+    min-height:280px;
+
+}
+```
+```css
+/* ===================================================
+=================================================== */
+
+/* Fade Animation */
+.fade-in{
+    animation:fadeIn .8s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Floating Animation */
+.float{
+    animation:floating 3s ease-in-out infinite;
+}
+
+@keyframes floating{
+    0%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+    100%{
+        transform:translateY(0);
+    }
+}
+
+/* Pulse Animation */
+.pulse{
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.08);
+    }
+    100%{
+        transform:scale(1);
+    }
+}
+
+/* Glow Effect */
+.glow{
+    box-shadow:
+        0 0 15px rgba(255,255,255,.6),
+        0 0 30px rgba(255,90,170,.5),
+        0 0 60px rgba(255,90,170,.3);
+}
+
+/* Hidden Utility */
+.hidden{
+    display:none !important;
+}
+
+/* ===============================
+   Scrollbar
+================================*/
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#ffd8ea;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#ff4f92;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#ff2d7d;
+}
+
+/* ===============================
+   Selection
+================================*/
+
+::selection{
+    background:#ff4f92;
+    color:#fff;
+}
+
+/* ===============================
+   Responsive
+================================*/
+
+@media (max-width:900px){
+
+    .title{
+        font-size:3rem;
+    }
+
+    #question-screen h2{
+        font-size:2.4rem;
+    }
+
+    #counter{
+        gap:15px;
+    }
+
+    .counter-box{
+        width:100px;
+        height:100px;
+    }
+
+    .photo-frame{
+        width:270px;
+        height:270px;
+    }
+
+    #cake{
+        transform:scale(.9);
+    }
+
+    #messageBox{
+        padding:25px;
+    }
+
+}
+
+@media (max-width:600px){
+
+    body{
+        padding:0;
+    }
+
+    .content{
+        width:95%;
+    }
+
+    .title{
+        font-size:2.2rem;
+        line-height:1.3;
+    }
+
+    .subtitle{
+        font-size:1rem;
+    }
+
+    button{
+        width:100%;
+        max-width:260px;
+        padding:15px;
+        font-size:1rem;
+    }
+
+    .question-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .counter-box{
+        width:85px;
+        height:85px;
+    }
+
+    .counter-box span{
+        font-size:1.5rem;
+    }
+
+    .photo-frame{
+        width:220px;
+        height:220px;
+    }
+
+    #cake{
+        transform:scale(.75);
+    }
+
+    #loveText{
+        font-size:1.3rem;
+        line-height:1.6;
+    }
+
+    #messageBox{
+        padding:20px;
+    }
+
+    #typewriter{
+        font-size:1rem;
+        line-height:1.8;
+    }
+
+}
+
+@media (max-width:380px){
+
+    .title{
+        font-size:1.8rem;
+    }
+
+    .counter-box{
+        width:75px;
+        height:75px;
+    }
+
+    .counter-box span{
+        font-size:1.2rem;
+    }
+
+    .photo-frame{
+        width:180px;
+        height:180px;
+    }
+
+    #cake{
+        transform:scale(.65);
+    }
+
+}
+
+/* ===============================
+   End
+================================*/
+```
