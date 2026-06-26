@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Fajer 🎂</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="hearts-container"></div>
+<div id="confetti-container"></div>
+
+<!-- WELCOME -->
+<section id="welcome-screen" class="page active">
+    <div class="content">
+        <h1 class="title">Happy 17th Birthday Fajer 🎂</h1>
+        <button id="startBtn">Start</button>
+    </div>
+</section>
+
+<!-- COUNTER -->
+<section id="counter-screen" class="page">
+    <div class="content">
+        <h2>Since 01/01/2024 ❤️</h2>
+
+        <div id="counter">
+            <div class="counter-box"><span id="days">0</span><small>Days</small></div>
+            <div class="counter-box"><span id="hours">0</span><small>Hours</small></div>
+            <div class="counter-box"><span id="minutes">0</span><small>Minutes</small></div>
+            <div class="counter-box"><span id="seconds">0</span><small>Seconds</small></div>
+        </div>
+
+        <img src="photo.jpg" class="photo-frame">
+
+        <button id="toQuestionBtn">Continue</button>
+    </div>
+</section>
+
+<!-- QUESTION -->
+<section id="question-screen" class="page">
+    <div class="content">
+        <h2>تحبني؟ ❤️</h2>
+
+        <div class="question-buttons">
+            <button id="yesBtn">إي</button>
+            <button id="noBtn">لا</button>
+        </div>
+    </div>
+</section>
+
+<!-- CAKE -->
+<section id="cake-screen" class="page">
+    <div class="content">
+        <h2>تمنى أمنية ✨</h2>
+
+        <div id="cake">
+            <div id="candles"></div>
+        </div>
+
+        <button id="blowBtn">Blow</button>
+
+        <h3 id="loveText">أحبك حيل ❤️</h3>
+    </div>
+</section>
+
+<!-- LETTER -->
+<section id="letter-screen" class="page">
+    <div class="content">
+        <div id="messageBox">
+            <p id="typewriter"></p>
+        </div>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
